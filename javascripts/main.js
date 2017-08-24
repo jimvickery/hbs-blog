@@ -8,22 +8,29 @@ let authorList = require('./blog-factory');
 
 Handlebars.registerHelper("incrementer", (value) => parseInt(value) + 1);
 
-function populatePage(stuff) {
-    let newDiv = document.createElement('div');
-    newDiv.innerHTML = blogTemplate(stuff);
-    $("#blog-cards").append(newDiv);
-}
+
+
+//method that uses a promise to the the data from blog-factory
 //return promise 
 authorList.getAuthors () 
 .then( 
-    (inventoryFromLoadInventoryResolve) => {
-        console.log('Blog Promise', inventoryFromLoadInventoryResolve);
-        populatePage(inventoryFromLoadInventoryResolve);
+    (stuff) => {
+        console.log('Blog Promise', stuff);
+        populatePage(stuff);
     },
     (reject) => {
         console.log('SOMETHING IS WRONG WITH THE PROMISE');
 
 });
+
+
+
+
+function populatePage(stuff) {
+    let newDiv = document.createElement('div');
+    newDiv.innerHTML = blogTemplate(stuff);
+    $("#blog-cards").append(newDiv);
+}
 
 
 
