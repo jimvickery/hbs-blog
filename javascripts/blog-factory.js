@@ -19,7 +19,7 @@ console.log("blogs from array", blogs);
 blogMethods.getAuthors = () => {
     return new Promise (function(resolve, reject){
         $.ajax({
-            url: 'authors.json'
+            url: 'https://awesome-data-48b09.firebaseio.com/authors.json'
 
         })
         .done (function(data){
